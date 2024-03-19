@@ -58,19 +58,20 @@
             font-size: 16px;
             font-weight: bold;
             margin-bottom: 5px;
-            color: pink; /* Set title color to royal purple */
+            color: royalpurple; /* Set title color to royal purple */
         }
 
         /* Style for the get button */
         .get-button {
             padding: 5px 10px;
-            background-color: #000000; /* Set background color to black */
-            color: pink; /* Set text color to dark red */
+            background-color: pink; /* Set background color to pink */
+            color: white; /* Set text color to white */
             border: none;
-            border-radius: 3px;
+            border-radius: 50%;
             cursor: pointer;
             font-size: 14px;
             align-self: center; /* Center align the button */
+            font-weight: bold; /* Make the font bold */
         }
     </style>
 </head>
@@ -80,7 +81,7 @@
         <h1>Link Bypasser</h1>
         <label for="urlInput">Enter URL:</label>
         <input type="text" id="urlInput" required>
-        <button onclick="bypass()">Bypass</button>
+        <button class="get-button" onclick="bypass()">Bypass</button>
         <div id="result"></div>
 
         <script>
