@@ -11,6 +11,10 @@
             border: 1px solid #ccc;
             border-radius: 10px;
             margin-bottom: 20px;
+            background-image: url('https://cdn.discordapp.com/attachments/1165511843989700631/1219554855270481981/Untitled23_20240319024921.png?ex=660bb9f7&is=65f944f7&hm=c47ae4ad7a85e2403741cee5b56e67af7028cd33d1646208bc8e07e8ed23c7b8&'); /* Specify the URL of your background image */
+            background-size: cover; /* Cover the entire background */
+            background-position: center; /* Center the background image */
+            color: #fff; /* Set text color to white for better visibility */
         }
 
         /* Style for the card container */
@@ -21,6 +25,7 @@
             padding: 10px;
             margin-bottom: 20px;
             display: flex;
+            cursor: pointer; /* Make the card clickable */
         }
 
         /* Style for the logo */
@@ -28,6 +33,7 @@
             width: 50px;
             height: 50px;
             margin-right: 10px;
+            cursor: default; /* Remove the cursor pointer from the logo */
         }
 
         /* Style for the content */
@@ -57,14 +63,6 @@
             cursor: pointer;
             font-size: 14px;
         }
-
-        /* Style for the apps section */
-        .apps-section {
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
     </style>
 </head>
 <body>
@@ -92,35 +90,11 @@
             }
         </script>
 
-        <!-- Logo as a clickable link -->
-        <a href="itms-services://?action=download-manifest&url=https://raw.githubusercontent.com/henforu/arc4ray.github.io/main/manifest.plist">
-            <img src="https://cdn.discordapp.com/attachments/1175989793260306463/1219533173441036309/IMG_1761.webp?ex=660ba5c6&is=65f930c6&hm=bbb6981b142c3428816f1b281f30a18f777977f7c85857b4b9b413eb2e921e93" alt="Arceus X" class="logo">
-        </a>
-    </div>
+        <!-- Logo -->
+        <img src="https://cdn.discordapp.com/attachments/1175989793260306463/1219533173441036309/IMG_1761.webp?ex=660ba5c6&is=65f930c6&hm=bbb6981b142c3428816f1b281f30a18f777977f7c85857b4b9b413eb2e921e93" alt="Arceus X" class="logo">
 
-    <!-- Apps section -->
-    <div class="apps-section">
-        <!-- Card 1 -->
-        <div class="card">
-            <img src="logo1.png" alt="Logo 1" class="logo">
-            <div class="content">
-                <div class="title">App Title 1</div>
-                <div class="description">Description of App 1 goes here.</div>
-            </div>
-            <button class="get-button">Get</button>
-        </div>
-
-        <!-- Card 2 -->
-        <div class="card">
-            <img src="logo2.png" alt="Logo 2" class="logo">
-            <div class="content">
-                <div class="title">App Title 2</div>
-                <div class="description">Description of App 2 goes here.</div>
-            </div>
-            <button class="get-button">Get</button>
-        </div>
-
-        <!-- Add more cards as needed -->
+        <!-- Get button for manifest link -->
+        <button class="get-button" onclick="window.location.href='itms-services://?action=download-manifest&url=https://raw.githubusercontent.com/henforu/arc4ray.github.io/main/manifest.plist'">Get</button>
     </div>
 </body>
 </html>
