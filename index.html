@@ -27,7 +27,6 @@
             overflow: hidden; /* Hide any overflowing content */
         }
 
-        /* Style for the card */
         .card {
             width: calc(100% - 22px); /* Adjusted width to account for borders and padding */
             border: 1px solid #ccc;
@@ -41,42 +40,33 @@
             background-color: #000000; /* Set background color to black */
         }
 
-        /* Style for the logo */
-        .logo {
-            width: 50px;
-            height: 50px;
-            margin-right: 10px;
-            cursor: default; /* Remove the cursor pointer from the logo */
-        }
-
-        /* Style for the content */
         .content {
             flex-grow: 1;
             margin-right: 10px; /* Add margin to separate content from button */
             text-align: center; /* Center align the title */
         }
 
-        /* Style for the title */
         .title {
-            font-size: 16px;
-            font-weight: bold;
-            margin-bottom: 5px;
-            color: royalpurple; /* Set title color to royal purple */
+             font-size: 16px;
+             font-weight: bold;
+             margin-bottom: 5px;
+             color: royalpurple; /* Set title color to royal purple */
         }
+
+        .description {
+           display: none; /* Remove description content */
+        }
+
 
         /* Style for the get button */
         .get-button {
             padding: 5px 10px;
             background-color: #000000; /* Set background color to black */
-            color: darkred; /* Set text color to dark red */
+            color: pink; /* Set text color to dark red */
             border: none;
             border-radius: 3px;
             cursor: pointer;
             font-size: 14px;
-        }
-
-        .description {
-            display: none; /* Remove description content */
         }
     </style>
 </head>
@@ -113,6 +103,7 @@
             <img src="https://cdn.discordapp.com/attachments/1175989793260306463/1219533173441036309/IMG_1761.webp?ex=660ba5c6&is=65f930c6&hm=bbb6981b142c3428816f1b281f30a18f777977f7c85857b4b9b413eb2e921e93&" alt="Logo" class="logo">
             <div class="content">
                 <div class="title">Arceus X</div>
+                <div class="description">Roblox executor</div>
             </div>
             <button class="get-button" onclick="window.location.href='itms-services://?action=download-manifest&url=https://raw.githubusercontent.com/henforu/arc4ray.github.io/main/manifest.plist'">Download</button>
         </div>
@@ -120,6 +111,7 @@
             <img src="https://cdn.discordapp.com/attachments/1165511843989700631/1219618957032558633/Untitled26_20240319071002.png?ex=660bf5aa&is=65f980aa&hm=4045bb93808287f0e5604445c88cf3084ed7491e211ff2d22c4ec950237ad391&" alt="Logo" class="logo">
             <div class="content">
                 <div class="title">Discord Server</div>
+                <div class="description">Join our discord server</div>
             </div>
             <button class="get-button" onclick="window.location.href='https://discord.gg/MgbCeUSWGy'">Join</button>
         </div>
@@ -127,6 +119,7 @@
             <img src="https://cdn.discordapp.com/attachments/1165511843989700631/1219630475933651006/Untitled26_20240319075556.png?ex=660c0065&is=65f98b65&hm=6694af127cc0e258e8c773108b0a404643a0f06a7d5bb8f66ad04551f4694043&" alt="Logo" class="logo">
             <div class="content">
                 <div class="title">Certificates</div>
+                <div class="description">0 : Available certificates</div>
             </div>
             <button class="get-button" onclick="window.location.href='./certs'">View</button>
         </div>
