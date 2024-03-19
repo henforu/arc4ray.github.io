@@ -5,81 +5,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Link Bypasser</title>
     <style>
-        /* General styles */
-        body {
-            background-image: url('https://example.com/background-image.jpg'); /* Add your background image URL */
-            background-size: cover;
-            background-position: center;
-            color: white;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
         /* Style for the bypasser section */
         .bypasser-section {
-            text-align: center;
+            text-align: center; /* Center align the content */
             padding: 20px;
+            border: 1px solid #ccc;
             border-radius: 10px;
             margin-bottom: 20px;
-            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+            background-image: url('https://cdn.discordapp.com/attachments/1165511843989700631/1219554855270481981/Untitled23_20240319024921.png?ex=660bb9f7&is=65f944f7&hm=c47ae4ad7a85e2403741cee5b56e67af7028cd33d1646208bc8e07e8ed23c7b8'); /* Specify the URL of your background image */
+            background-size: cover; /* Cover the entire background */
+            background-position: center; /* Center the background image */
+            color: #fff; /* Set text color to white for better visibility */
         }
 
         /* Style for the card container */
         .card-section {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
             padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
             margin-bottom: 20px;
+            overflow: hidden; /* Hide any overflowing content */
         }
 
         /* Style for the card */
         .card {
             width: calc(100% - 22px); /* Adjusted width to account for borders and padding */
-            max-width: 300px;
             border: 1px solid #ccc;
             border-radius: 5px;
             padding: 10px;
-            margin: 10px;
+            margin-bottom: 20px;
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+            cursor: pointer; /* Make the card clickable */
+            justify-content: space-between; /* Space between elements */
+            align-items: center; /* Align items vertically */
+            background-color: #000000; /* Set background color to white */
         }
 
         /* Style for the logo */
         .logo {
             width: 50px;
             height: 50px;
-            margin-bottom: 10px;
+            margin-right: 10px;
+            cursor: default; /* Remove the cursor pointer from the logo */
+        }
+
+        /* Style for the content */
+        .content {
+            flex-grow: 1;
+            margin-right: 10px; /* Add margin to separate content from button */
         }
 
         /* Style for the title */
         .title {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: bold;
             margin-bottom: 5px;
-            color: darkred;
+            color: darkred; /* Set title color to dark red */
         }
 
         /* Style for the description */
         .description {
             font-size: 14px;
-            text-align: center;
-            color: darkred;
+            color: darkred; /* Set description color to dark red */
         }
 
         /* Style for the get button */
         .get-button {
             padding: 5px 10px;
-            background-color: darkred;
-            color: white;
+            background-color: #007bff;
+            color: #fff;
             border: none;
             border-radius: 3px;
             cursor: pointer;
             font-size: 14px;
-            margin-top: 10px;
         }
     </style>
 </head>
@@ -120,27 +118,31 @@
             </div>
             <button class="get-button" onclick="window.location.href='https://example1.com'">Go to Example 1</button>
         </div>
-
-        <!-- Card 2 -->
         <div class="card">
             <img src="https://cdn.discordapp.com/attachments/1175989793260306463/1219533173441036309/IMG_1761.webp?ex=660ba5c6&is=65f930c6&hm=bbb6981b142c3428816f1b281f30a18f777977f7c85857b4b9b413eb2e921e93&" alt="Logo" class="logo">
             <div class="content">
-                <div class="title">Card 2</div>
-                <div class="description">Description for Card 2.</div>
+                <div class="title">Arceus X</div>
+                <div class="description">Powerful Roblox executor.</div>
             </div>
-            <button class="get-button" onclick="window.location.href='https://example2.com'">Go to Example 2</button>
+            <button class="get-button" onclick="window.location.href='https://example1.com'">Go to Example 1</button>
         </div>
-
-        <!-- Card 3 -->
         <div class="card">
             <img src="https://cdn.discordapp.com/attachments/1175989793260306463/1219533173441036309/IMG_1761.webp?ex=660ba5c6&is=65f930c6&hm=bbb6981b142c3428816f1b281f30a18f777977f7c85857b4b9b413eb2e921e93&" alt="Logo" class="logo">
             <div class="content">
-                <div class="title">Card 3</div>
-                <div class="description">Description for Card 3.</div>
+                <div class="title">Arceus X</div>
+                <div class="description">Powerful Roblox executor.</div>
             </div>
-            <button class="get-button" onclick="window.location.href='https://example3.com'">Go to Example 3</button>
+            <button class="get-button" onclick="window.location.href='https://example1.com'">Go to Example 1</button>
         </div>
+        <div class="card">
+            <img src="https://cdn.discordapp.com/attachments/1175989793260306463/1219533173441036309/IMG_1761.webp?ex=660ba5c6&is=65f930c6&hm=bbb6981b142c3428816f1b281f30a18f777977f7c85857b4b9b413eb2e921e93&" alt="Logo" class="logo">
+            <div class="content">
+                <div class="title">Arceus X</div>
+                <div class="description">Powerful Roblox executor.</div>
+            </div>
+            <button class="get-button" onclick="window.location.href='https://example1.com'">Go to Example 1</button>
+        </div>
+        <!-- Add more cards here if needed -->
     </div>
-
 </body>
 </html>
