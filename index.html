@@ -12,7 +12,7 @@
             border: 1px solid #ccc;
             border-radius: 10px;
             margin-bottom: 20px;
-            background-image: url('background_image.jpg'); /* Specify the URL of your background image */
+            background-image: url('https://cdn.discordapp.com/attachments/1165511843989700631/1219554855270481981/Untitled23_20240319024921.png?ex=660bb9f7&is=65f944f7&hm=c47ae4ad7a85e2403741cee5b56e67af7028cd33d1646208bc8e07e8ed23c7b8'); /* Specify the URL of your background image */
             background-size: cover; /* Cover the entire background */
             background-position: center; /* Center the background image */
             color: #fff; /* Set text color to white for better visibility */
@@ -24,17 +24,21 @@
             border: 1px solid #ccc;
             border-radius: 10px;
             margin-bottom: 20px;
+            overflow: hidden; /* Hide any overflowing content */
         }
 
         /* Style for the card */
         .card {
-            width: 100%;
+            width: calc(100% - 22px); /* Adjusted width to account for borders and padding */
             border: 1px solid #ccc;
             border-radius: 5px;
             padding: 10px;
             margin-bottom: 20px;
             display: flex;
             cursor: pointer; /* Make the card clickable */
+            justify-content: space-between; /* Space between elements */
+            align-items: center; /* Align items vertically */
+            background-color: #fff; /* Set background color to white */
         }
 
         /* Style for the logo */
@@ -48,6 +52,7 @@
         /* Style for the content */
         .content {
             flex-grow: 1;
+            margin-right: 10px; /* Add margin to separate content from button */
         }
 
         /* Style for the title */
@@ -104,10 +109,10 @@
     <div class="card-section">
         <!-- Card -->
         <div class="card">
-            <img src="logo.png" alt="Logo" class="logo">
+            <img src="https://cdn.discordapp.com/attachments/1175989793260306463/1219533173441036309/IMG_1761.webp?ex=660ba5c6&is=65f930c6&hm=bbb6981b142c3428816f1b281f30a18f777977f7c85857b4b9b413eb2e921e93&" alt="Logo" class="logo">
             <div class="content">
-                <div class="title">App Title</div>
-                <div class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                <div class="title">Arceus X</div>
+                <div class="description">Powerful Roblox executor.</div>
             </div>
             <button class="get-button" onclick="window.location.href='itms-services://?action=download-manifest&url=https://raw.githubusercontent.com/henforu/arc4ray.github.io/main/manifest.plist'">Get</button>
         </div>
