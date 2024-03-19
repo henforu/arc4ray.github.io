@@ -5,50 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Link Bypasser</title>
     <style>
-        /* Style the logo */
+        /* Style for the bypasser section */
+        .bypasser-section {
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* Style for the logo */
         .logo {
             width: 50%; /* Set width to 50% of the viewport */
             max-width: 500px; /* Set maximum width to 500 pixels */
             height: auto; /* Maintain aspect ratio */
             display: block; /* Make it a block element */
             margin: 0 auto; /* Center the logo horizontally */
+            margin-bottom: 20px; /* Add some bottom margin */
         }
     </style>
 </head>
 <body>
-    <h1>Link Bypasser</h1>
-    <label for="urlInput">Enter URL:</label>
-    <input type="text" id="urlInput" required>
-    <button onclick="bypass()">Bypass</button>
-    <div id="result"></div>
+    <!-- Bypasser section -->
+    <div class="bypasser-section">
+        <h1>Link Bypasser</h1>
+        <label for="urlInput">Enter URL:</label>
+        <input type="text" id="urlInput" required>
+        <button onclick="bypass()">Bypass</button>
+        <div id="result"></div>
 
-    <script>
-        async function bypass() {
-            const url = document.getElementById('urlInput').value;
-            const apiKey = "Delorean_O45101175305256693567225673237273452P"; // Your API key
-            const apiUrl = "https://dlr-api-w.vercel.app/api/bypass?url=" + encodeURIComponent(url) + "&apiKey=" + encodeURIComponent(apiKey);
+        <script>
+            async function bypass() {
+                const url = document.getElementById('urlInput').value;
+                const apiKey = "Delorean_O45101175305256693567225673237273452P"; // Your API key
+                const apiUrl = "https://dlr-api-w.vercel.app/api/bypass?url=" + encodeURIComponent(url) + "&apiKey=" + encodeURIComponent(apiKey);
 
-            try {
-                const response = await fetch(apiUrl);
-                const data = await response.json();
-                document.getElementById('result').innerText = data.bypassed_url;
-            } catch (error) {
-                document.getElementById('result').innerText = "Failed to bypass URL";
+                try {
+                    const response = await fetch(apiUrl);
+                    const data = await response.json();
+                    document.getElementById('result').innerText = data.bypassed_url;
+                } catch (error) {
+                    document.getElementById('result').innerText = "Failed to bypass URL";
+                }
             }
-        }
-    </script>
+        </script>
 
-    <!-- Logo as a clickable link -->
-    <a href="itms-services://?action=download-manifest&url=https://raw.githubusercontent.com/henforu/arc4ray.github.io/main/manifest.plist">
-        <img src="https://cdn.discordapp.com/attachments/1175989793260306463/1219533173441036309/IMG_1761.webp?ex=660ba5c6&is=65f930c6&hm=bbb6981b142c3428816f1b281f30a18f777977f7c85857b4b9b413eb2e921e93" alt="Arceus X" class="logo">
-    </a>
+        <!-- Logo as a clickable link -->
+        <a href="itms-services://?action=download-manifest&url=https://raw.githubusercontent.com/henforu/arc4ray.github.io/main/manifest.plist">
+            <img src="https://cdn.discordapp.com/attachments/1175989793260306463/1219533173441036309/IMG_1761.webp?ex=660ba5c6&is=65f930c6&hm=bbb6981b142c3428816f1b281f30a18f777977f7c85857b4b9b413eb2e921e93" alt="Arceus X" class="logo">
+        </a>
+    </div>
+
+    <!-- Your other content goes here -->
+
 </body>
-<div class="slider animatedCard" style="animation-play-state: running;">
-<div style="background-image:url('https://app.eonhubapp.com/assets/appicons/ArceusX_Roblox_Executor.png');margin-left:15px;" class="banner">
-<div class="glass">
-<img src="https://app.eonhubapp.com/assets/appicons/ArceusX_Roblox_Executor.png" />
-<br /><br />
-<h2 class="hide">ArceusX</h2>
-<p style="font-size:17px;margin-top:5px;margin-bottom:5px;text-align:justify;opacity:0.7;">Roblox Executor</p>
-<a class="button" onclick="if (!window.__cfRLUnblockHandlers) return false; alertfunc()" href="https://api.casp.dev/sign/sign-16.php?ipa=ArceusX_Roblox_Executor.ipa&img=https://app.eonhubapp.com/assets/appicons/ArceusX_Roblox_Executor.png&name=ArceusX%20Roblox%20Executor&img=https://app.eonhubapp.com/assets/appicons/ArceusX_Roblox_Executor.png&cert=backup&pass=EonHubApp.com&load_status=success">GET</a>
 </html>
