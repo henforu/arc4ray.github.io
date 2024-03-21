@@ -1,39 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Link Bypasser</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification and Bypasser</title>
+    <style>
+        /* Style for the notification container */
+        #notificationContainer {
+            position: fixed;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80%;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            font-size: small;
+            overflow: hidden;
+            background-color: #ffffff; /* Set background color to white */
+            color: #000000; /* Set text color to black */
+            border: 1px solid #ccc; /* Add a border */
+        }
+
+        /* Style for the loader */
+        .loader {
+            display: none; /* Initially hide the loader */
+        }
+
+        /* Style for the bypass form */
+        #bypassForm {
+            display: none; /* Initially hide the bypass form */
+        }
+    </style>
 </head>
 <body>
-<h1>Link Bypasser</h1>
-<input type="text" id="urlInput" placeholder="Enter URL">
-<button onclick="bypass()">Bypass</button>
-<p id="output"></p>
+    <!-- Notification container -->
+    <div id="notificationContainer">
+        <div id="notificationContent"></div>
+    </div>
 
-<script>
-async function bypass() {
-    const url = document.getElementById("urlInput").value;
-    const api_url = "https://464c-2a09-bac1-3280-00-2b-50.ngrok-free.app";
-    const api_key = "Delorean_O45101175305256693567225673237273452P";
-    
-    try {
-        const headers = {
-            "Authorization": "Bearer " + api_key
-        };
-        const bypassResponse = await fetch(`${api_url}/api/bypass?url=${encodeURIComponent(url)}`, { headers });
-        if (bypassResponse.ok) {
-            const resultData = await bypassResponse.json();
-            const bypassedUrl = resultData.result;
-            document.getElementById("output").textContent = `Bypassed! Bypassed URL: ${bypassedUrl}`;
-        } else {
-            const errorData = await bypassResponse.json();
-            document.getElementById("output").textContent = `Error! API returns: ${errorData.result} (${errorData.time_elapsed} -- ${errorData.Delorean})`;
+    <!-- Loader -->
+    <div class="loader">Loading...</div>
+
+    <!-- Bypass form -->
+    <form id="bypassForm">
+        <label for="url">URL:</label>
+        <input type="text" id="url" required>
+        <button type="button" onclick="eoesunabombapapupapupapupapupapupapupapupapu()">Bypass</button>
+    </form>
+
+    <!-- Response display -->
+    <div id="response"></div>
+
+    <script>
+        // Notification logic
+        var notificationContainer = document.getElementById('notificationContainer');
+        var notificationContent = document.getElementById('notificationContent');
+        notificationContent.style.top = '-100px'; // Start the notification hidden
+        setTimeout(function() {
+            notificationContent.style.top = '0'; // Move the notification down
+        }, 1000); // Delay for 1 second
+        setTimeout(function() {
+            notificationContent.style.top = '-100px'; // Move the notification up after 10 seconds
+        }, 11000); // Delay for 11 seconds
+
+        // Bypass form logic
+        let turnstiletoken;
+        setTimeout(() => {
+            document.querySelector('.loader').style.display = 'none';
+            document.querySelector('h1').style.display = "none";
+            document.querySelector('#bypassForm').style.display = 'block';
+        }, 2000);
+
+        const usa = new URL(window.location.href).searchParams.get("url");
+        document.getElementById("url").value = usa;
+        if (usa) {
+            notificationContent.innerHTML = 'We detected your link! Just complete turnstile and it will be automatically bypassed! <a href="https://discord.gg/hKUUpWyC7G">https://discord.gg/hKUUpWyC7G</a>';
         }
-    } catch (error) {
-        document.getElementById("output").textContent = "Error! API is offline!";
-    }
+
+        function eoesunabombapapupapupapupapupapupapupapupapu(token) {
+            turnstiletoken = token;
+            const esotilin = new URL(window.location.href).searchParams.get("url");
+            if (esotilin) {
+                performBypass();
+                return;
+            }
+        }
+
+        function generateRandomString(length) {
+            let result = '';
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            const charactersLength = characters.length;
+            for (let i = 0; i < length; i++) {
+                result += characters.charAt(Math.floor(Math.random() * charactersLength));
+            }
+            return result;
+        }
+
+        function performBypass() {
+            const url = document.getElementById('url').value;
+
+            if (!turnstiletoken || !url) {
+                alert('Turnstile and URL are required!');
+                return;
+            }
+
+            document.querySelector('#bypassForm').style.display = 'none';
+            document.querySelector('.loader').style.display = 'block';
+            fetch("https://corsproxy.io/?https://dlr-api-w.vercel.app/?wdak=" + generateRandomString(50), {
+                method: 'GET'
+            })
+            .then(response => response.json())
+            .then(data => {
+                const requestURL = `${data.api_url}/api/bypass?url=${encodeURIComponent(url)}&turnstile=${turnstiletoken}&verifytoken=${generateRandomString(1500)}`;
+
+                fetch(requestURL, {
+                    method: 'GET',
+                    headers: {
+                        'ngrok-skip-browser-warning': 'gogogo',
+                        'Authorization': 'Bearer Delorean_O45101175305256693567225673237273452P'
+                    }
+                })
+                .then(res => res.json())
+                .then(data => {
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 50000);
+
+                    document.querySelector('.loader').style.display                .then(res => res.json())
+                .then(data => {
+                    setTimeout(() => {
+                        window.location.reload();
+                    }, 50000);
+
+                    document.querySelector('.loader').style.display = 'none';
+                    document.querySelector('#response').style.display = 'block';
+                    document.querySelector('#response').innerText = data.result;
+                    addCopyButton(data.result);
+                })
+                .catch(err => {
+                    document.querySelector('.loader').style.display = 'none';
+                    document.querySelector('#response').style.display = 'block';
+                    document.querySelector('#response').innerText = err;
+
+                    setTimeout(() => {
+                        if (new URL(window.location.href).searchParams.get("url")) {
+                            window.location.href = "./bypass";
+                            return;
+                        }
+                        window.location.reload();
+                    }, 50000);
+                });
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+        });
 }
-</script>
-</body>
-</html>
