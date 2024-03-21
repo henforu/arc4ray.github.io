@@ -3,168 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notification and Bypasser</title>
-    <style>
-        /* Style for the notification container */
-        #notificationContainer {
-            position: fixed;
-            top: 50px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80%;
-            padding: 20px;
-            border-radius: 15px;
-            text-align: center;
-            font-size: small;
-            overflow: hidden;
-            background-color: #ffffff; /* Set background color to white */
-            color: #000000; /* Set text color to black */
-            border: 1px solid #ccc; /* Add a border */
-        }
-
-        /* Style for the loader */
-        .loader {
-            display: none; /* Initially hide the loader */
-        }
-
-        /* Style for the bypass form */
-        #bypassForm {
-            text-align: center;
-            margin-top: 20px;
-        }
-
-        /* Style for the response display */
-        #response {
-            display: none;
-            margin-top: 20px;
-            background-color: #f0f0f0; /* Set background color to light gray */
-            padding: 10px;
-            border-radius: 5px;
-        }
-
-        /* Style for the error message */
-        #errorStatus {
-            color: red;
-        }
-    </style>
+    <title>Simple Bypasser</title>
 </head>
 <body>
-    <!-- Notification container -->
-    <div id="notificationContainer">
-        <div id="notificationContent"></div>
-    </div>
-
-    <!-- Loader -->
-    <div class="loader">Loading...</div>
-
     <!-- Bypass form -->
     <form id="bypassForm">
         <label for="url">URL:</label>
         <input type="text" id="url" required>
-        <button type="button" onclick="eoesunabombapapupapupapupapupapupapupapupapu()">Bypass</button>
+        <button type="button" onclick="performBypass()">Bypass</button>
     </form>
 
-    <!-- Response display -->
-    <div id="response"></div>
-
-    <!-- Error message -->
-    <div id="errorStatus"></div>
+    <!-- Display result -->
+    <div id="result"></div>
 
     <script>
-        // Notification logic
-        var notificationContent = document.getElementById('notificationContent');
-        notificationContent.style.top = '-100px'; // Start the notification hidden
-
-        function showNotification(message, isError = false) {
-            notificationContent.innerText = message;
-            notificationContent.style.top = '0';
-            if (isError) {
-                notificationContent.style.backgroundColor = '#ffcccc'; // Set background color to light red for errors
-                notificationContent.style.color = '#ff0000'; // Set text color to red for errors
-            } else {
-                notificationContent.style.backgroundColor = '#ffffff'; // Reset background color for non-errors
-                notificationContent.style.color = '#000000'; // Reset text color for non-errors
-            }
-        }
-
-        // Bypass form logic
-        let turnstiletoken;
-        setTimeout(() => {
-            document.querySelector('.loader').style.display = 'none';
-            document.querySelector('h1').style.display = "none";
-            document.querySelector('#bypassForm').style.display = 'block';
-        }, 2000);
-
-        function eoesunabombapapupapupapupapupapupapupapupapu(token) {
-            turnstiletoken = token;
-            const esotilin = new URL(window.location.href).searchParams.get("url");
-            if (esotilin) {
-                performBypass();
-                return;
-            }
-        }
-
-        function generateRandomString(length) {
-            let result = '';
-            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-            const charactersLength = characters.length;
-            for (let i = 0; i < length; i++) {
-                result += characters.charAt(Math.floor(Math.random() * charactersLength));
-            }
-            return result;
-        }
-
         function performBypass() {
             const url = document.getElementById('url').value;
+            const api_key = "Delorean_O45101175305256693567225673237273452P";
+            const headers = {
+                "Authorization": "Bearer " + api_key
+            };
 
-            if (!turnstiletoken || !url) {
-                showNotification('Turnstile and URL are required!', true);
-                return;
-            }
-
-            document.querySelector('#bypassForm').style.display = 'none';
-            document.querySelector('.loader').style.display = 'block';
-            fetch("https://corsproxy.io/?https://dlr-api-w.vercel.app/?wdak=" + generateRandomString(50), {
-                method: 'GET'
+            fetch(`https://464c-2a09-bac1-3280-00-2b-50.ngrok-free.app/api/bypass?url=${encodeURIComponent(url)}`, {
+                method: 'GET',
+                headers: headers
             })
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
             .then(data => {
-                const requestURL = `${data.api_url}/api/bypass?url=${encodeURIComponent(url)}&turnstile=${turnstiletoken}&verifytoken=${generateRandomString(1500)}`;
-
-                fetch(requestURL, {
-                    method: 'GET',
-                    headers: {
-                        'ngrok-skip-browser-warning': 'gogogo',
-                        'Authorization': 'Bearer Delorean_O45101175305256693567225673237273452P'
-                    }
-                })
-                .then(res => res.json())
-                .then(data => {
-                    setTimeout(() => {
-                        window.location.reload();
-                    }, 50000);
-
-                    document.querySelector('.loader').style.display = 'none';
-                    document.querySelector('#response').style.display = 'block';
-                    document.querySelector('#response').innerText = data.result;
-                    showNotification(data.result);
-                })
-                .catch(err => {
-                    document.querySelector('.loader').style.display = 'none';
-                    document.querySelector('#response').style.display = 'block';
-                    document.querySelector('#response').innerText = err;
-
-                    setTimeout(() => {
-                        if (new URL(window.location.href).searchParams.get("url")) {
-                            window.location.href = "./bypass";
-                            return;
-                        }
-                        window.location.reload();
-                    }, 50000);
-                });
+                // Display result
+                document.getElementById('result').innerText = data.result;
             })
             .catch(error => {
-                showNotification('Error fetching data: ' + error, true);
+                // Handle errors
+                console.error('There was a problem with the request:', error);
             });
         }
     </script>
