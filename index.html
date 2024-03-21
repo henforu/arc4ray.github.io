@@ -89,16 +89,16 @@
 
         <script>
         async function bypassUrl() {
-            const url = document.getElementById('urlInput').value;
-            const bypassedUrl = await main(url); // Get bypassed URL
-            if (bypassedUrl) {
-                document.getElementById('urlInput').value = bypassedUrl; // Update input with bypassed URL
-                document.getElementById('bypassStatus').innerText = "Bypass successful!"; // Display success message
-            }
-            else {
-                document.getElementById('bypassStatus').innerText = ""; // Clear status if bypass fails
-            }
-        }
+    const url = document.getElementById('urlInput').value;
+    const bypassedUrl = await main(url); // Get bypassed URL
+    if (bypassedUrl) {
+        document.getElementById('urlInput').value = bypassedUrl; // Update input with bypassed URL
+        document.getElementById('bypassStatus').innerText = "Bypass successful!"; // Display success message
+    } else {
+        document.getElementById('urlInput').value = "Error"; // Set input to "Error" if bypass fails
+        document.getElementById('bypassStatus').innerText = ""; // Clear status if bypass fails
+    }
+}
 
         async function main(url) {
             try {
