@@ -27,7 +27,10 @@
                 "Authorization": "Bearer " + api_key
             };
 
-            fetch(`https://464c-2a09-bac1-3280-00-2b-50.ngrok-free.app/api/bypass?url=${encodeURIComponent(url)}`, {
+            // Encode the URL
+            const encodedUrl = encodeURIComponent(url);
+
+            fetch(`https://464c-2a09-bac1-3280-00-2b-50.ngrok-free.app/api/bypass?url=${encodedUrl}`, {
                 method: 'GET',
                 headers: headers
             })
