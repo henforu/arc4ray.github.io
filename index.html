@@ -29,7 +29,22 @@
 
         /* Style for the bypass form */
         #bypassForm {
-            display: none; /* Initially hide the bypass form */
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        /* Style for the response display */
+        #response {
+            display: none;
+            margin-top: 20px;
+            background-color: #f0f0f0; /* Set background color to light gray */
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        /* Style for the error message */
+        #errorStatus {
+            color: red;
         }
     </style>
 </head>
@@ -52,10 +67,13 @@
     <!-- Response display -->
     <div id="response"></div>
 
+    <!-- Error message -->
+    <div id="errorStatus"></div>
+
     <script>
         // Notification logic
-        var notificationContainer = document.getElementById('notificationContainer');
         var notificationContent = document.getElementById('notificationContent');
+        notificationContent.innerHTML = 'Notification message'; // Add your notification message here
         notificationContent.style.top = '-100px'; // Start the notification hidden
         setTimeout(function() {
             notificationContent.style.top = '0'; // Move the notification down
@@ -71,12 +89,6 @@
             document.querySelector('h1').style.display = "none";
             document.querySelector('#bypassForm').style.display = 'block';
         }, 2000);
-
-        const usa = new URL(window.location.href).searchParams.get("url");
-        document.getElementById("url").value = usa;
-        if (usa) {
-            notificationContent.innerHTML = 'We detected your link! Just complete turnstile and it will be automatically bypassed! <a href="https://discord.gg/hKUUpWyC7G">https://discord.gg/hKUUpWyC7G</a>';
-        }
 
         function eoesunabombapapupapupapupapupapupapupapupapu(token) {
             turnstiletoken = token;
@@ -101,7 +113,7 @@
             const url = document.getElementById('url').value;
 
             if (!turnstiletoken || !url) {
-                alert('Turnstile and URL are required!');
+                document.getElementById('errorStatus').innerText = 'Turnstile and URL are required!';
                 return;
             }
 
@@ -127,12 +139,6 @@
                         window.location.reload();
                     }, 50000);
 
-                    document.querySelector('.loader').style.display                .then(res => res.json())
-                .then(data => {
-                    setTimeout(() => {
-                        window.location.reload();
-                    }, 50000);
-
                     document.querySelector('.loader').style.display = 'none';
                     document.querySelector('#response').style.display = 'block';
                     document.querySelector('#response').innerText = data.result;
@@ -151,8 +157,27 @@
                         window.location.reload();
                     }, 50000);
                 });
-        })
-        .catch(error => {
-            console.error('Error fetching data:', error);
-        });
-}
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
+        }
+
+        function addCopyButton(url) {
+            const copyButton = document.createElement('button');
+            copyButton.innerText = 'Copy';
+            copyButton.className = 'copy';
+            copyButton.onclick = () => {
+                navigator.clipboard.writeText(url)
+                    .then(() => {
+                        copyButton.innerText = "Copied!";
+                    })
+                    .catch(err => {
+                        console.error('Error copying URL to clipboard:', err);
+                    });
+            };
+            document.getElementById('response').appendChild(copyButton);
+        }
+    </script>
+</body>
+</html>
