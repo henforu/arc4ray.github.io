@@ -14,28 +14,21 @@
 <script>
 async function bypass() {
     const url = document.getElementById("urlInput").value;
-    const api = "https://dlr-api-w.vercel.app";
+    const api_url = "https://464c-2a09-bac1-3280-00-2b-50.ngrok-free.app";
     const api_key = "Delorean_O45101175305256693567225673237273452P";
     
     try {
-        const response = await fetch(api);
-        if (response.ok) {
-            const data = await response.json();
-            const api_url = data.api_url.trim();
-            const headers = {
-                "Authorization": "Bearer " + api_key
-            };
-            const bypassResponse = await fetch(`${api_url}/api/bypass?url=${encodeURIComponent(url)}`, { headers });
-            if (bypassResponse.ok) {
-                const resultData = await bypassResponse.json();
-                const bypassedUrl = resultData.result;
-                document.getElementById("output").textContent = `Bypassed! Bypassed URL: ${bypassedUrl}`;
-            } else {
-                const errorData = await bypassResponse.json();
-                document.getElementById("output").textContent = `Error! API returns: ${errorData.result} (${errorData.time_elapsed} -- ${errorData.Delorean})`;
-            }
+        const headers = {
+            "Authorization": "Bearer " + api_key
+        };
+        const bypassResponse = await fetch(`${api_url}/api/bypass?url=${encodeURIComponent(url)}`, { headers });
+        if (bypassResponse.ok) {
+            const resultData = await bypassResponse.json();
+            const bypassedUrl = resultData.result;
+            document.getElementById("output").textContent = `Bypassed! Bypassed URL: ${bypassedUrl}`;
         } else {
-            document.getElementById("output").textContent = "Error! API is offline!";
+            const errorData = await bypassResponse.json();
+            document.getElementById("output").textContent = `Error! API returns: ${errorData.result} (${errorData.time_elapsed} -- ${errorData.Delorean})`;
         }
     } catch (error) {
         document.getElementById("output").textContent = "Error! API is offline!";
