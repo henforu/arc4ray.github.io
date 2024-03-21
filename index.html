@@ -13,8 +13,11 @@
         <button type="button" onclick="performBypass()">Bypass</button>
     </form>
 
+    <!-- Display error message -->
+    <div id="errorMessage" style="color: red;"></div>
+
     <!-- Display result -->
-    <div id="result"></div>
+    <div id="result" style="margin-top: 10px;"></div>
 
     <script>
         function performBypass() {
@@ -35,12 +38,16 @@
                 return response.json();
             })
             .then(data => {
+                // Clear error message
+                document.getElementById('errorMessage').innerText = '';
                 // Display result
                 document.getElementById('result').innerText = data.result;
             })
             .catch(error => {
-                // Handle errors
-                console.error('There was a problem with the request:', error);
+                // Display error message
+                document.getElementById('errorMessage').innerText = 'Error: ' + error.message;
+                // Clear result
+                document.getElementById('result').innerText = '';
             });
         }
     </script>
