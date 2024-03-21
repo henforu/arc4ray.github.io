@@ -6,53 +6,32 @@
     <title>URL Bypasser</title>
 </head>
 <body>
-    <!-- Bypass form -->
-    <form id="bypassForm">
-        <label for="url">URL:</label>
-        <input type="text" id="url" required>
-        <button type="button" onclick="performBypass()">Bypass</button>
+    <h1>URL Bypasser</h1>
+    <form id="urlForm">
+        <label for="urlInput">Enter URL:</label>
+        <input type="text" id="urlInput" name="url" required>
+        <button type="submit">Submit</button>
     </form>
-
-    <!-- Display error message -->
-    <div id="errorMessage" style="color: red;"></div>
-
-    <!-- Display result -->
-    <div id="result" style="margin-top: 10px;"></div>
+    <div id="result"></div>
 
     <script>
-        function performBypass() {
-            const url = document.getElementById('url').value;
-            const api_key = "Delorean_O45101175305256693567225673237273452P";
-            const headers = {
-                "Authorization": "Bearer " + api_key
-            };
-
-            // Encode the URL
-            const encodedUrl = encodeURIComponent(url);
-
-            fetch(`https://464c-2a09-bac1-3280-00-2b-50.ngrok-free.app/api/bypass?url=${encodedUrl}`, {
-                method: 'GET',
-                headers: headers
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Network response was not ok');
-                }
-                return response.json();
-            })
-            .then(data => {
-                // Clear error message
-                document.getElementById('errorMessage').innerText = '';
-                // Display result
-                document.getElementById('result').innerText = data.result;
-            })
-            .catch(error => {
-                // Display error message
-                document.getElementById('errorMessage').innerText = 'Error: ' + error.message;
-                // Clear result
-                document.getElementById('result').innerText = '';
+        document.getElementById('urlForm').addEventListener('submit', async function(event) {
+            event.preventDefault();
+            const url = document.getElementById('urlInput').value;
+            const response = await fetch('/process-url', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ url: url })
             });
-        }
+            const data = await response.json();
+            if (response.ok) {
+                document.getElementById('result').innerText = data.bypassed_url;
+            } else {
+                document.getElementById('result').innerText = data.error;
+            }
+        });
     </script>
 </body>
 </html>
