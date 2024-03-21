@@ -75,6 +75,18 @@
         var notificationContent = document.getElementById('notificationContent');
         notificationContent.style.top = '-100px'; // Start the notification hidden
 
+        function showNotification(message, isError = false) {
+            notificationContent.innerText = message;
+            notificationContent.style.top = '0';
+            if (isError) {
+                notificationContent.style.backgroundColor = '#ffcccc'; // Set background color to light red for errors
+                notificationContent.style.color = '#ff0000'; // Set text color to red for errors
+            } else {
+                notificationContent.style.backgroundColor = '#ffffff'; // Reset background color for non-errors
+                notificationContent.style.color = '#000000'; // Reset text color for non-errors
+            }
+        }
+
         // Bypass form logic
         let turnstiletoken;
         setTimeout(() => {
@@ -106,7 +118,7 @@
             const url = document.getElementById('url').value;
 
             if (!turnstiletoken || !url) {
-                document.getElementById('errorStatus').innerText = 'Turnstile and URL are required!';
+                showNotification('Turnstile and URL are required!', true);
                 return;
             }
 
@@ -135,8 +147,7 @@
                     document.querySelector('.loader').style.display = 'none';
                     document.querySelector('#response').style.display = 'block';
                     document.querySelector('#response').innerText = data.result;
-                    notificationContent.innerText = data.result; // Set the notification message to the bypass result
-                    notificationContent.style.top = '0'; // Move the notification down
+                    showNotification(data.result);
                 })
                 .catch(err => {
                     document.querySelector('.loader').style.display = 'none';
@@ -153,7 +164,7 @@
                 });
             })
             .catch(error => {
-                console.error('Error fetching data:', error);
+                showNotification('Error fetching data: ' + error, true);
             });
         }
     </script>
