@@ -73,14 +73,7 @@
     <script>
         // Notification logic
         var notificationContent = document.getElementById('notificationContent');
-        notificationContent.innerHTML = 'Notification message'; // Add your notification message here
         notificationContent.style.top = '-100px'; // Start the notification hidden
-        setTimeout(function() {
-            notificationContent.style.top = '0'; // Move the notification down
-        }, 1000); // Delay for 1 second
-        setTimeout(function() {
-            notificationContent.style.top = '-100px'; // Move the notification up after 10 seconds
-        }, 11000); // Delay for 11 seconds
 
         // Bypass form logic
         let turnstiletoken;
@@ -142,7 +135,8 @@
                     document.querySelector('.loader').style.display = 'none';
                     document.querySelector('#response').style.display = 'block';
                     document.querySelector('#response').innerText = data.result;
-                    addCopyButton(data.result);
+                    notificationContent.innerText = data.result; // Set the notification message to the bypass result
+                    notificationContent.style.top = '0'; // Move the notification down
                 })
                 .catch(err => {
                     document.querySelector('.loader').style.display = 'none';
@@ -161,22 +155,6 @@
             .catch(error => {
                 console.error('Error fetching data:', error);
             });
-        }
-
-        function addCopyButton(url) {
-            const copyButton = document.createElement('button');
-            copyButton.innerText = 'Copy';
-            copyButton.className = 'copy';
-            copyButton.onclick = () => {
-                navigator.clipboard.writeText(url)
-                    .then(() => {
-                        copyButton.innerText = "Copied!";
-                    })
-                    .catch(err => {
-                        console.error('Error copying URL to clipboard:', err);
-                    });
-            };
-            document.getElementById('response').appendChild(copyButton);
         }
     </script>
 </body>
