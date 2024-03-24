@@ -78,10 +78,6 @@
     </style>
 </head>
 <body>
-    <!-- Notification container -->
-    <div id="notificationContainer" class="notification-container hidden">
-        <div id="notificationContent"></div>
-    </div>
     <!-- Bypasser section -->
     <div class="bypasser-section">
     <h1 style="color: pink;">Link Bypasser</h1>
@@ -95,7 +91,7 @@
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback" defer></script>
     <div class="loader"></div>
     <h1></h1>
-    <div id="bypassForm" class="hidden">
+    <div id="bypassForm">
         <h2 class="title">Bypass</h2>
         <div class="cf-turnstile" data-sitekey="0x4AAAAAAAVg7Ll1qMEl9eUC" data-callback="eoesunabombapapupapupapupapupapupapupapupapu"></div>
         <input type="text" id="url" class="textbox" placeholder="URL to bypass" required>
@@ -104,31 +100,7 @@
         <div class="card-container">
             <div class="card scrollable-card">
                 <p class="card-title">Supported Links</p>
-                <p class="links">https://rekonise.com</p>
-                <p class="links">https://www.mediafire.com</p>
-                <p class="links">https://mediafire.com</p>
-                <p class="links">https://linkvertise.com</p>
-                <p class="links">https://loot-link.com/</p>
-                <p class="links">https://loot-links.com/</p>
-                <p class="links">https://lootlink.org/</p>
-                <p class="links">https://lootlinks.co/s?</p>
-                <p class="links">https://lootdest.info/s?</p>
-                <p class="links">https://lootdest.org/s?</p>
-                <p class="links">https://lootdest.com/s?</p>
-                <p class="links">https://links-loot.com/s?</p>
-                <p class="links">https://linksloot.net/s?</p>
-                <p class="links">https://mboost.me/</p>
-                <p class="links">codex</p>
-                <p class="links">https://gateway.platoboost.com/a/8?id=</p>
-                <p class="links">https://hohohubv->ac90f67762c4.herokuapp.com/api/ge>tkeyv2?hwid=</p>
-                <p class="links">https://leasurepartment.xyz/?h=</p>
-                <p class="links">https://spdmteam.com/key-system->1?hwid=</p>
-                <p class="links">https://leasurepartment.xyz</p>
-                <p class="links">https://pandadevelopment.net/getkey?</p>
-                <p class="links">https://auth.pandadevelopment.net/getkey?</p>
-                <p class="links">https://trigonevo.com/getkey</p>
-                <p class="links">https://auth.pandadevelopment.cloud/</p>
-                <p class="links">https://pandadevelopment.cloud/</p>
+                <!-- Your supported links here -->
             </div>
             
             <div class="card">
@@ -144,7 +116,7 @@
     </div>
     <div id="response"></div>
 	<script>
-		// Crear el contenedor de la notificación
+		// Create the notification container
 		var notificationContainer = document.createElement('div');
 		notificationContainer.style.position = 'fixed';
 		notificationContainer.style.top = '50px';
@@ -157,25 +129,24 @@
 		notificationContainer.style.fontSize = 'small';
 		notificationContainer.style.overflow = 'hidden';
 
-		// Crear la notificación dentro del contenedor
+		// Create the notification within the container
 		var notification = document.createElement('div');
 
-		// Agregar la notificación al contenedor
+		// Add the notification to the container
 		notificationContainer.appendChild(notification);
 
-		// Agregar el contenedor al cuerpo del documento
+		// Add the container to the document body
 		document.body.appendChild(notificationContainer);
-		notification.style.top = '-100'
-		// Bajar la notificación
+		notification.style.top = '-100px';
+		// Slide down the notification
 		setTimeout(function() {
 			notification.style.top = '0';
 		}, 1000);
 
-		// Subir la notificación después de 10 segundos
+		// Slide up the notification after 10 seconds
 		setTimeout(function() {
 			notification.style.top = '-100px';
 		}, 11000);
-		
 	</script>
 <script>
     let turnstiletoken;
@@ -188,7 +159,7 @@
     const usa = new URL(window.location.href).searchParams.get("url");
     document.getElementById("url").value = usa;
     if (usa) {
-        notification.innerHTML = 'We detected your link! Just complete turnstile and it will be automatically bypassed! https://discord.gg/hKUUpWyC7G';
+        notification.innerHTML = 'We detected your link! Just complete turnstile and it will be automatically bypassed! <a href="https://discord.gg/hKUUpWyC7G">https://discord.gg/hKUUpWyC7G</a>';
     }
 
     function eoesunabombapapupapupapupapupapupapupapupapu(token) {
