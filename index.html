@@ -3,96 +3,246 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Link Bypasser</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Astra Bypasser</title>
+
     <style>
         body {
-            background-color: #222222;
-        } 
-        /* Style for the bypasser section */
-        .bypasser-section {
-            text-align: center; /* Center align the content */
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            background-image: url('https://cdn.discordapp.com/attachments/1165511843989700631/1219554855270481981/Untitled23_20240319024921.png?ex=660bb9f7&is=65f944f7&hm=c47ae4ad7a85e2403741cee5b56e67af7028cd33d1646208bc8e07e8ed23c7b8'); /* Specify the URL of your background image */
-            background-size: cover; /* Cover the entire background */
-            background-position: center; /* Center the background image */
-            color: #fff; /* Set text color to white for better visibility */
-        }
-
-        /* Style for the card container */
-        .card-section {
-            padding: 20px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            overflow: hidden; /* Hide any overflowing content */
-        }
-
-        /* Style for the card */
-        .card {
-            width: calc(100% - 22px); /* Adjusted width to account for borders and padding */
-            border: 1px solid #ccc;
-            border-radius: 15px; /* Make the cards more round */
-            padding: 10px;
-            margin-bottom: 20px;
+            background-color: #000;
+            color: #fff;
+            font-family: sans-serif;
             display: flex;
-            flex-direction: column; /* Align children vertically */
-            cursor: pointer; /* Make the card clickable */
-            background-color: #000000; /* Set background color to black */
+            flex-direction: column;
+            align-items: center; /* Center horizontally */
+            min-height: 100vh;
+            margin: 0;
+            overflow-x: hidden;
+            flex-wrap: wrap;
         }
-
-        /* Style for the logo */
-        .logo {
+    
+        .title {
+            position: absolute;
+            top: -15px;
+            left: 10px;
+        }
+    
+        .loader {
+            border: 4px solid #fff;
+            border-top: 4px solid #ff0000;
+            border-radius: 50%;
             width: 50px;
             height: 50px;
-            margin: 0 auto 10px; /* Center align the logo */
+            animation: spin 1s linear infinite;
+            position: relative;
+            top: 300px;
         }
-
-        /* Style for the content */
-        .content {
-            text-align: center; /* Center align the content */
-            flex-grow: 1;
+    
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+    
+            100% {
+                transform: rotate(360deg);
+            }
         }
-
-        /* Style for the title */
-        .title {
+    
+        .hidden {
+            display: none;
+        }
+    
+        .textbox {
+            background-color: #333;
+            border: 2px solid #fff;
+            color: #fff;
+            padding: 10px;
+            margin: 10px;
+            border-radius: 5px;
             font-size: 16px;
-            font-weight: bold;
-            margin-bottom: 5px;
-            color: pink; /* Set title color to royal purple */
+            width: 300px;
+            position: relative;
+            top: 50px;
+            left: 300px;
+        }
+    
+        .button:hover {
+            background-color: #CBCBCB;
+        }
+    
+        .button:active {
+            transform: scale(0.9);
         }
 
-        /* Style for the get button */
-        .get-button {
-            padding: 5px 10px;
-            background-color: #000000; /* Set background color to black */
-            color: pink; /* Set text color to dark red */
+        .button {
+            background-color: #FFFFFF;
+            color: #000;
             border: none;
-            border-radius: 3px;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 5px;
             cursor: pointer;
-            font-size: 14px;
-            align-self: center; /* Center align the button */
+            transition: background-color 0.3s ease;
+            position: relative;
+            top: 50px;
+            left: 295px;
+        }
+
+        .copy {
+            background-color: #FFFFFF;
+            color: #000;
+            border: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            position: relative;
+            top: 15px;
+            left: auto;
+        }
+    
+
+        .cf-turnstile {
+            position: relative;
+            top: 50px;
+            left: 325px;
+        }
+
+        .card-container {
+            display: flex;
+            flex-wrap: wrap; 
+            justify-content: center; 
+            gap: 10px;
+            padding: 10px;
+            max-height: calc(100vh - 200px); 
+        }
+
+        .card {
+            flex-shrink: 0;
+            background-color: #323232;
+            border: 2px solid #6D6D6D;
+            color: #FFFFFF;
+            padding: 10px;
+            margin: 5px;
+            border-radius: 5px;
+            font-size: 16px;
+            width: 300px;
+            height: 200px; 
+            position: relative;
+            top: 50px;
+            font-family: sans-serif;
+            word-wrap: break-word;
+            overflow-x: hidden;
+        }
+
+        #response {
+            margin-top: 20px;
+}
+
+        .scrollable-card {
+            overflow-y: auto;
+        }
+
+        .card-title {
+            position: relative;
+            bottom: 23px;
+            left: 90px;
+            font-family: sans-serif;
+            font-weight: bold;
+        
+        }
+
+        .about {
+            position: relative;
+            bottom: 23px;
+            left: 130px;
+            font-weight: bold;
+        }
+
+        .links {
+            position: relative;
+            bottom: 25px;
+        }
+
+        .scrollable-card::-webkit-scrollbar {
+            width: 5px; /* Set the width of the scrollbar */
+            background-color: #323232; /* Set the background color of the scrollbar track */
+        }
+        
+        .scrollable-card::-webkit-scrollbar-thumb {
+            background-color: #000;
+            border-radius: 50px;
+        }
+
+        .description {
+            position: relative;
+            bottom: 25px;
+        }
+
+        #footer {
+            align-items: center;
+            margin-top: auto;
+            font-size: 12px;
+            color: #ccc;
+        }
+
+        @media screen and (max-width: 425px) {
+            body {
+                overflow-x: hidden;
+            }
+            
+            .textbox {
+                background-color: #333;
+                border: 2px solid #fff;
+                color: #fff;
+                padding: 10px;
+                margin: 10px;
+                border-radius: 5px;
+                font-size: 16px;
+                width: 300px;
+                position: relative;
+                top: 50px;
+                left: 15px;
+            }
+            
+            .cf-turnstile {
+                position: relative;
+                top: 50px;
+                left: 45px;
+            }
+
+            .button {
+                position: relative;
+                left: 130px;
+        }
+
+        #response {
+            font-family: sans-serif;
+            flex-wrap: wrap;
+            position: relative;
+            max-width: calc(100vw - 100px); 
+            max-height: calc(100vh - 300px); 
+            padding: 10px;
+            margin-top: 20px;
+}
+        }
+
+        .copy {
+            margin-bottom: auto;
+            position: relative;
+            left: 75px;
         }
     </style>
+    
 </head>
-<body>
-    <!-- Bypasser section -->
-    <div class="bypasser-section">
-    <h1 style="color: pink;">Link Bypasser</h1>
-    <label for="urlInput" style="color: pink;">Key -</label>
-    <input type="text" id="urlInput" required style="background-color: #222222;">
-    <button onclick="bypassUrl()" style="background-color: #222222; color: pink; border: none; padding: 5px 10px; cursor: pointer; font-size: 10px; font-weight: bold; border-radius: 10px;">Bypass</button>
-    <div id="bypassStatus" style="color: green;"></div> <!-- Display bypass status -->
-    <div id="errorStatus" style="color: red;"></div> <!-- Display error status -->
-    <div id="result"></div>
 
+<body>
     <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback" defer></script>
     <div class="loader"></div>
     <h1></h1>
-    <div id="bypassForm">
-        <h2 class="title">Bypass</h2>
+    <div id="bypassForm" class="hidden">
+        <h2 class="title">Astra Bypasser</h2>
         <div class="cf-turnstile" data-sitekey="0x4AAAAAAAVg7Ll1qMEl9eUC" data-callback="eoesunabombapapupapupapupapupapupapupapupapu"></div>
         <input type="text" id="url" class="textbox" placeholder="URL to bypass" required>
         <button id="bypassButton" class="button" onclick="performBypass()">Bypass</button>
@@ -100,7 +250,31 @@
         <div class="card-container">
             <div class="card scrollable-card">
                 <p class="card-title">Supported Links</p>
-                <!-- Your supported links here -->
+                <p class="links">https://rekonise.com</p>
+                <p class="links">https://www.mediafire.com</p>
+                <p class="links">https://mediafire.com</p>
+                <p class="links">https://linkvertise.com</p>
+                <p class="links">https://loot-link.com/</p>
+                <p class="links">https://loot-links.com/</p>
+                <p class="links">https://lootlink.org/</p>
+                <p class="links">https://lootlinks.co/s?</p>
+                <p class="links">https://lootdest.info/s?</p>
+                <p class="links">https://lootdest.org/s?</p>
+                <p class="links">https://lootdest.com/s?</p>
+                <p class="links">https://links-loot.com/s?</p>
+                <p class="links">https://linksloot.net/s?</p>
+                <p class="links">https://mboost.me/</p>
+                <p class="links">codex</p>
+                <p class="links">https://gateway.platoboost.com/a/8?id=</p>
+                <p class="links">https://hohohubv->ac90f67762c4.herokuapp.com/api/ge>tkeyv2?hwid=</p>
+                <p class="links">https://leasurepartment.xyz/?h=</p>
+                <p class="links">https://spdmteam.com/key-system->1?hwid=</p>
+                <p class="links">https://leasurepartment.xyz</p>
+                <p class="links">https://pandadevelopment.net/getkey?</p>
+                <p class="links">https://auth.pandadevelopment.net/getkey?</p>
+                <p class="links">https://trigonevo.com/getkey</p>
+                <p class="links">https://auth.pandadevelopment.cloud/</p>
+                <p class="links">https://pandadevelopment.cloud/</p>
             </div>
             
             <div class="card">
@@ -114,9 +288,9 @@
             </div>
         </div>
     </div>
-    <div id="response"></div>
+    <div id="response" class="hidden"></div>
 	<script>
-		// Create the notification container
+		// Crear el contenedor de la notificación
 		var notificationContainer = document.createElement('div');
 		notificationContainer.style.position = 'fixed';
 		notificationContainer.style.top = '50px';
@@ -129,24 +303,25 @@
 		notificationContainer.style.fontSize = 'small';
 		notificationContainer.style.overflow = 'hidden';
 
-		// Create the notification within the container
+		// Crear la notificación dentro del contenedor
 		var notification = document.createElement('div');
 
-		// Add the notification to the container
+		// Agregar la notificación al contenedor
 		notificationContainer.appendChild(notification);
 
-		// Add the container to the document body
+		// Agregar el contenedor al cuerpo del documento
 		document.body.appendChild(notificationContainer);
-		notification.style.top = '-100px';
-		// Slide down the notification
+		notification.style.top = '-100'
+		// Bajar la notificación
 		setTimeout(function() {
 			notification.style.top = '0';
 		}, 1000);
 
-		// Slide up the notification after 10 seconds
+		// Subir la notificación después de 10 segundos
 		setTimeout(function() {
 			notification.style.top = '-100px';
 		}, 11000);
+		
 	</script>
 <script>
     let turnstiletoken;
@@ -159,7 +334,7 @@
     const usa = new URL(window.location.href).searchParams.get("url");
     document.getElementById("url").value = usa;
     if (usa) {
-        notification.innerHTML = 'We detected your link! Just complete turnstile and it will be automatically bypassed! <a href="https://discord.gg/hKUUpWyC7G">https://discord.gg/hKUUpWyC7G</a>';
+        notification.innerHTML = 'We detected your link! Just complete turnstile and it will be automatically bypassed! https://discord.gg/hKUUpWyC7G';
     }
 
     function eoesunabombapapupapupapupapupapupapupapupapu(token) {
@@ -169,7 +344,7 @@
             performBypass();
             return;
         }
-        }
+    }
 
 	function generateRandomString(length) {
 	  let result = '';
@@ -182,96 +357,57 @@
 	}
 
     function performBypass() {
-    const url = document.getElementById('url').value;
-    alert("URL being submitted: " + url); // Display the URL in an alert
-    notification.innerText = 'Performing bypass...';
+        const url = document.getElementById('url').value;
 
-    const url = document.getElementById('url').value;
+        if (!turnstiletoken || !url) {
+            alert('Turnstile and URL are required!');
+            return;
+        }
 
-    if (!turnstiletoken || !url) {
-        // Notification: Error - Turnstile and URL are required
-        notification.innerText = 'Error: Turnstile and URL are required!';
-        setTimeout(() => {
-            notification.innerText = ''; // Clear notification after a few seconds
-        }, 5000);
-        return;
-    }
-
-    // Notification: URL retrieved successfully
-    notification.innerText = 'URL retrieved successfully: ' + url;
-
-    document.querySelector('#bypassForm').style.display = 'none';
-    // Notification: Hiding bypass form
-    notification.innerText = 'Hiding bypass form...';
-
-    document.querySelector('.loader').style.display = 'block';
-    // Notification: Displaying loader
-    notification.innerText = 'Displaying loader...';
-
-    fetch("https://corsproxy.io/?https://dlr-api-w.vercel.app/?wdak=" + generateRandomString(50), {
-        method: 'GET'
-    })
-    .then(response => response.json())
-    .then(data => {
-        // Notification: Fetch success
-        notification.innerText = 'Fetch success: ' + JSON.stringify(data);
-
-        const requestURL = `${data.api_url}/api/bypass?url=${url}&turnstile=${turnstiletoken}&verifytoken=${generateRandomString(1500)}`;
-        // Notification: Request URL generated
-        notification.innerText = 'Request URL generated: ' + requestURL;
-
-        fetch(requestURL, {
-            method: 'GET',
-            headers: {
-                'ngrok-skip-browser-warning': 'gogogo',
-                'Authorization': 'Delorean_O45101175305256693567225673237273452P'
-            }
+        document.querySelector('#bypassForm').style.display = 'none';
+        document.querySelector('.loader').style.display = 'block';
+        fetch("https://corsproxy.io/?https://dlr-api-w.vercel.app/?wdak="+generateRandomString(50), {
+			method: 'GET'
         })
-        .then(res => res.json())
-        .then(data => {
-            // Notification: Bypass success
-            notification.innerText = 'Bypass success: ' + JSON.stringify(data);
+            .then(response => response.json())
+            .then(data => {
+                const requestURL = `${data.api_url}/api/bypass?url=${url}&turnstile=${turnstiletoken}&verifytoken=${generateRandomString(1500)}`;
 
-            setTimeout(() => {
-                window.location.reload();
-            }, 50000);
+                fetch(requestURL, {
+                    method: 'GET',
+                    headers: {
+                        'ngrok-skip-browser-warning': 'gogogo',
+                        'Authorization': 'Delorean_O45101175305256693567225673237273452P'
+                    }
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        setTimeout(() => {
+                            window.location.reload();
+                        }, 50000);
 
-            document.querySelector('.loader').style.display = 'none';
-            document.querySelector('#response').style.display = 'block';
-            document.querySelector('#response').innerText = data.result;
-            addCopyButton(data.result);
-        })
-        .catch(err => {
-    const errorMessage = `Error: ${err}, URL: ${url}`;
-    document.querySelector('.loader').style.display = 'none';
-    document.querySelector('#response').style.display = 'block';
-    document.querySelector('#response').innerText = errorMessage;
+                        document.querySelector('.loader').style.display = 'none';
+                        document.querySelector('#response').style.display = 'block';
+                        document.querySelector('#response').innerText = data.result;
+                        addCopyButton(data.result);
+                    })
+                    .catch(err => {
+                        document.querySelector('.loader').style.display = 'none';
+                        document.querySelector('#response').style.display = 'block';
+                        document.querySelector('#response').innerText = err;
 
-    // Hide the error message after 10 seconds
-    setTimeout(() => {
-        document.querySelector('#response').style.display = 'none';
-    }, 10000);
-    });
-    })
-    .catch(error => {
-    const errorMessage = 'Error fetching data: ' + error;
-    const notification = document.createElement('div');
-    notification.textContent = errorMessage;
-    notification.style.backgroundColor = 'red';
-    notification.style.color = 'white';
-    notification.style.padding = '10px';
-    notification.style.borderRadius = '5px';
-    notification.style.position = 'fixed';
-    notification.style.top = '50px';
-    notification.style.left = '50%';
-    notification.style.transform = 'translateX(-50%)';
-    document.body.appendChild(notification);
-    
-    // Remove notification after 5 seconds
-    setTimeout(() => {
-        notification.remove();
-    }, 5000);
-    });
+                        setTimeout(() => {
+                            if (new URL(window.location.href).searchParams.get("url")) {
+                                window.location.href = "./bypass";
+                                return;
+                            }
+                            window.location.reload();
+                        }, 50000);
+                    });
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+            });
     }
 
     function addCopyButton(url) {
@@ -290,32 +426,7 @@
         document.getElementById('response').appendChild(copyButton);
     }
 </script>
-</div>
 
-    <!-- Card section -->
-    <div class="card-section">
-        <!-- Card 1 -->
-        <div class="card">
-            <img src="https://cdn.discordapp.com/attachments/1175989793260306463/1219533173441036309/IMG_1761.webp?ex=660ba5c6&is=65f930c6&hm=bbb6981b142c3428816f1b281f30a18f777977f7c85857b4b9b413eb2e921e93&" alt="Logo" class="logo">
-            <div class="content">
-                <div class="title">Arceus X</div>
-            </div>
-            <button class="get-button" onclick="window.location.href='itms-services://?action=download-manifest&url=https://raw.githubusercontent.com/henforu/arc4ray.github.io/main/manifest.plist'">Download</button>
-        </div>
-        <div class="card">
-            <img src="https://cdn.discordapp.com/attachments/1165511843989700631/1219618957032558633/Untitled26_20240319071002.png?ex=660bf5aa&is=65f980aa&hm=4045bb93808287f0e5604445c88cf3084ed7491e211ff2d22c4ec950237ad391&" alt="Logo" class="logo">
-            <div class="content">
-                <div class="title">Discord Server</div>
-            </div>
-            <button class="get-button" onclick="window.location.href='https://discord.gg/MgbCeUSWGy'">Join</button>
-        </div>
-        <div class="card">
-            <img src="https://cdn.discordapp.com/attachments/1165511843989700631/1219630475933651006/Untitled26_20240319075556.png?ex=660c0065&is=65f98b65&hm=6694af127cc0e258e8c773108b0a404643a0f06a7d5bb8f66ad04551f4694043&" alt="Logo" class="logo">
-            <div class="content">
-                <div class="title">Certificates</div>
-            </div>
-            <button class="get-button" onclick="window.location.href='./certs'">View</button>
-        </div>
-    </div>
+<footer id="footer">Made with ❤️ by corrupted</footer>
 </body>
 </html>
