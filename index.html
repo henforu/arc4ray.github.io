@@ -241,13 +241,16 @@
             addCopyButton(data.result);
         })
         .catch(err => {
-            // Notification: Bypass error
-            notification.innerText = 'Bypass error: ' + err;
+    const errorMessage = `Error: ${err}, URL: ${url}`;
+    document.querySelector('.loader').style.display = 'none';
+    document.querySelector('#response').style.display = 'block';
+    document.querySelector('#response').innerText = errorMessage;
 
-            document.querySelector('.loader').style.display = 'none';
-            document.querySelector('#response').style.display = 'block';
-            document.querySelector('#response').innerText = err;
-        });
+    // Hide the error message after 10 seconds
+    setTimeout(() => {
+        document.querySelector('#response').style.display = 'none';
+    }, 10000);
+});
     })
     .catch(error => {
         // Notification: Error fetching data
