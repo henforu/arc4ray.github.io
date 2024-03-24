@@ -182,7 +182,8 @@
 	}
 
     function performBypass() {
-    // Notification: Performing bypass
+    const url = document.getElementById('url').value;
+    alert("URL being submitted: " + url); // Display the URL in an alert
     notification.innerText = 'Performing bypass...';
 
     const url = document.getElementById('url').value;
